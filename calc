@@ -1,0 +1,60 @@
+Introduction
+Ce dossier a pour objectif de présenter une analyse détaillée du calibrage des prix des options de l'action Apple. Le calibrage des options est une étape cruciale pour les investisseurs et les analystes financiers, car il permet de déterminer la juste valeur des options en fonction des conditions du marché. En utilisant des techniques de calcul avancées, ce dossier vise à fournir une compréhension approfondie des méthodes utilisées pour évaluer les options et à comparer les prix théoriques avec les prix du marché.
+Le dossier est structuré en plusieurs sections pour une meilleure compréhension et une analyse approfondie. Nous commencerons par une présentation des données, où nous décrirons la base de données historique des options (call et put) d'Apple, les nappes de volatilité respectives, et inclurons un graphique de l'évolution de la volatilité.
+Ensuite, nous détaillerons les différentes techniques de calcul utilisées pour le pricing des options, notamment le modèle de Black-Scholes et le modèle de Heston. Nous expliquerons également comment les paramètres clés tels que la volatilité implicite, le taux d'intérêt sans risque et les dividendes sont déterminés et intégrés dans les modèles de pricing.
+Nous présenterons ensuite les résultats du pricing des options call et put, avec des exemples détaillés de calculs et une comparaison avec les prix du marché. Une analyse de la précision des prix calculés par rapport aux prix du marché sera effectuée, ainsi qu'une analyse de la sensibilité des prix des options aux différents paramètres.
+Enfin, nous conclurons en résumant les principaux points abordés dans le dossier et en proposant des perspectives pour des recherches futures ou des améliorations des méthodes de calibrage. Les annexes incluront les données brutes utilisées pour les calculs et les codes de calcul utilisés pour le pricing des options.
+Ce dossier vise à fournir une analyse complète et rigoureuse du calibrage des prix des options de l'action Apple, en utilisant des techniques de calcul avancées et en tenant compte des conditions actuelles du marché.
+
+
+Description des données
+Nous disposons d'une base de données historique des options (call et put) de l'action Apple. Cette base de données comprend des informations détaillées sur chaque contrat d'option, telles que le symbole, la date d'expiration, le prix d'exercice, le type d'option (call ou put), le dernier prix, le prix de marché, le prix d'achat et de vente, la taille des ordres, le volume, l'intérêt ouvert, la date, la volatilité implicite, et les grecs (delta, gamma, theta, vega, rho). Ces données sont essentielles pour analyser et calibrer les prix des options, car elles fournissent une vue complète des conditions du marché et des caractéristiques des options.
+Evolution de la volatilité
+Le graphique de l'évolution de la volatilité montre comment la volatilité implicite des options a changé au fil du temps. Ce graphique est crucial pour identifier les tendances et les anomalies dans la volatilité du marché. En observant les variations de la volatilité implicite, nous pouvons détecter des périodes de forte incertitude ou de calme relatif sur le marché. Ces informations sont utiles pour ajuster nos modèles de pricing et pour prendre des décisions d'investissement éclairées.
+ 
+On observe des fluctuations de la volatilité implicite au fil du temps. Les pics de volatilité correspondent à des événements de marché importants ou à des annonces spécifiques à Apple. Une volatilité plus élevée indique une incertitude accrue sur le marché, ce qui peut augmenter le prix des options.
+Nappes de volatilité
+Les nappes de volatilité représentent la volatilité implicite des options en fonction de différents prix d'exercice et dates d'expiration. Pour les options call et put, les nappes de volatilité permettent de visualiser comment la volatilité implicite varie en fonction de ces paramètres. La volatilité implicite est un indicateur clé de la perception du risque par le marché et de la probabilité de mouvements futurs du prix de l'action. En analysant les nappes de volatilité, nous pouvons mieux comprendre les attentes du marché et ajuster nos modèles de pricing en conséquence.
+Nappe de volatilité pour le Put
+ 
+
+
+Ce graphique représente la surface en trois dimensions pour les options put. Il montre la relation entre le prix de l'option put, le prix d'exercice (strike price) et le temps jusqu'à l'échéance (maturity).
+La surface montre comment le prix de l'option put varie en fonction du prix d'exercice et du temps jusqu'à l'échéance. On observe que pour des prix d'exercice plus élevés, le prix de l'option put tend à augmenter, ce qui est attendu pour les options put. Pour des échéances plus longues, le prix de l'option put augmente également, reflétant la valeur temps de l'option.
+Nappe de volatilité pour le put 
+ 
+Ce graphique représente la surface en trois dimensions pour les options call. Il montre la relation entre le prix de l'option call, le prix d'exercice (strike price) et le temps jusqu'à l'échéance (maturity).
+La surface montre comment le prix de l'option call varie en fonction du prix d'exercice et du temps jusqu'à l'échéance. On observe que pour des prix d'exercice plus élevés, le prix de l'option call tend à diminuer, ce qui est attendu pour les options call. Pour des échéances plus longues, le prix de l'option call augmente, reflétant la valeur temps de l'option.
+En conclusion, ces graphiques fournissent une vue d'ensemble précieuse sur la dynamique des prix des options put et call ainsi que sur l'évolution de la volatilité implicite. Ils permettent d'identifier les tendances et les facteurs qui influencent les prix des options, aidant ainsi à prendre des décisions d'investissement éclairées.
+
+Techniques de calcul adoptées
+Modèle de Black-Scholes
+Le modèle de Black-Scholes est l'un des modèles les plus utilisés pour le pricing des options européennes. Il permet de calculer le prix théorique des options en fonction de plusieurs paramètres : le prix actuel de l'action, le prix d'exercice, le temps jusqu'à l'échéance, le taux d'intérêt sans risque et la volatilité de l'action.
+Hypothèses du modèle
+Le modèle de Black-Scholes repose sur plusieurs hypothèses : le prix de l'action suit une marche aléatoire avec une volatilité constante, il n'y a pas de coûts de transaction ni de taxes, les taux d'intérêt sans risque et les dividendes sont constants, les marchés sont efficients, c'est-à-dire que les prix des actifs reflètent toutes les informations disponibles et enfin, les options sont de type européen, c'est-à-dire qu'elles ne peuvent être exercées qu'à l'échéance.
+Méthode de Heston
+La méthode de Heston est un modèle de volatilité stochastique qui prend en compte la variance de la volatilité. Contrairement au modèle de Black-Scholes, qui suppose une volatilité constante, le modèle de Heston permet à la volatilité de varier dans le temps, ce qui le rend plus réaliste pour certaines options exotiques.
+Le prix de l'option est ensuite calculé en intégrant cette équation complexe.
+En résumé, le modèle de Black-Scholes et la méthode de Heston sont deux techniques de calcul avancées utilisées pour le pricing des options. Le modèle de Black-Scholes est basé sur des hypothèses de volatilité constante, tandis que la méthode de Heston permet de modéliser une volatilité stochastique, offrant ainsi une approche plus réaliste pour certaines options.
+Calibrage des paramètres
+
+Paramètres utilisés :
+•	Prix actuel du sous-jacent (S) : 150 $
+•	Taux sans risque (r) : 5 % (0.05)
+•	Dividendes (q) : 2 % (0.02)
+Volatilité implicite
+Pour le calibrage de la volatilité implicite, nous avons utilisé les données historiques des options d'Apple. La volatilité implicite a été calculée directement à partir des prix des options disponibles dans notre base de données. Voici un aperçu des résultats obtenus :
+Volatilité implicite moyenne : 5.26% pour les options put et 6.46% pour les options call.
+Volatilité implicite maximale : 9.76% pour les options put et 7.77% pour les options call.
+Volatilité implicite minimale : 0.02% pour les options put et 0.01% pour les options call.
+Ces valeurs montrent une variabilité significative de la volatilité implicite en fonction des différentes options, ce qui est crucial pour une évaluation précise des prix des options.
+Taux d'intérêt sans risque
+Le taux d'intérêt sans risque utilisé pour le calibrage est basé sur un taux constant de 5%. Ce taux a été choisi en se basant sur les rendements actuels des obligations d'État à court terme, qui sont considérées comme des investissements sans risque. Ce taux est appliqué uniformément à toutes les options dans notre base de données pour simplifier le modèle de pricing.
+Dividendes
+Les dividendes attendus ont été pris en compte en utilisant un taux de dividende constant de 2%. Ce taux reflète les paiements de dividendes prévus par Apple pendant la durée de vie des options. Les dividendes sont intégrés dans le modèle de pricing pour ajuster le prix de l'actif sous-jacent, ce qui permet une évaluation plus précise des options.
+Résumé des résultats
+Les paramètres calibrés ont été intégrés dans notre modèle de pricing des options pour obtenir les prix théoriques des options d'Apple. Voici un résumé des résultats obtenus :
+Prix des options call : Les prix des options call varient en fonction de la volatilité implicite, du taux d'intérêt sans risque et des dividendes attendus. Les prix théoriques calculés sont comparés aux prix du marché pour évaluer la précision du modèle.
+Prix des options put : De même, les prix des options put sont calculés en tenant compte des mêmes paramètres. Les résultats montrent une bonne concordance avec les prix du marché, ce qui valide l'efficacité du modèle de pricing utilisé.
+En conclusion, le calibrage des paramètres de volatilité implicite, de taux d'intérêt sans risque et de dividendes a permis d'obtenir des prix théoriques des options d'Apple qui sont en accord avec les prix du marché. Ces résultats fournissent une base solide pour une analyse plus approfondie et une prise de décision éclairée en matière d'investissement.
+
